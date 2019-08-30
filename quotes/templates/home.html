@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if ticker %}
+    {{ ticker }}
+{% endif %}
+
+
+
+
+    {% if api %}
+        {% if api == "Error" %}
+            Could Not Find The Stock Code, Please Enter Valid Code Above
+        {% else %}
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ api.companyName }}</h5>
+                    <p class="card-text">
+                        Price: ${{ api.latestPrice }}</br>
+                            Previous Closing Price: ${{ api.previousClose }}</br>
+                            Market Cap: ${{ api.marketCap }}</br>
+                            YTD Change: {{ api.ytdChange }}%</br>
+                            52WK High: ${{ api.week52High }}</br>
+                            53WK Low: ${{ api.week52Low }}
+                    </p>
+                  </div>
+                </div>
+        {% endif %}
+    {% else %}
+
+    {% endif %}
+
+{% endblock %}
+
+
